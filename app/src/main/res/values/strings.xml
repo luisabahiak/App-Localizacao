@@ -3,4 +3,5 @@
     <string name="buttonStart_txt">Start</string>
     <string name="buttonStop_txt">Stop</string>
     <string name="LocationTextView">Location</string>
+    <string name="buttonLocation_txt">Location</string>
 </resources>
