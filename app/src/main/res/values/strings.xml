@@ -4,4 +4,6 @@
     <string name="buttonStop_txt">Stop</string>
     <string name="LocationTextView">Location</string>
     <string name="buttonLocation_txt">Location</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="buttonMaps_txt">Maps</string>
 </resources>

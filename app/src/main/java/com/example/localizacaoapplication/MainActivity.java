@@ -20,7 +20,16 @@ public class MainActivity extends AppCompatActivity {
         buttonLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,LocationActivity.class);
+                Intent i = new Intent(getApplicationContext(),LocationActivity.class);
+                startActivity(i);
+            }
+        });
+
+        Button buttonMaps = findViewById(R.id.buttonMaps);
+        buttonMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(i);
             }
         });

@@ -3,11 +3,12 @@ package com.example.localizacaoapplication;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationRequest;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,6 +17,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.Priority;
 
 public class LocationActivity extends AppCompatActivity {
@@ -45,6 +47,22 @@ public class LocationActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        if (requestCode == REQUEST_LOCATION_UPDATES) {
+            if(grantResults.length == 1 && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED) {
+            // O usuário acabou de dar a permissão
+                startLocationUpdate();
+            }
+            else {
+            // O usuário não deu a permissão solicitada
+                Toast.makeText(this,"Sem permissão para mostrar atualizações da sua localização",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
     public void startLocationUpdate(){
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) ==
